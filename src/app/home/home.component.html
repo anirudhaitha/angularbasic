@@ -1,0 +1,124 @@
+<!-- NG IF -->
+
+<h2 *ngIf="continue">
+ hello world
+</h2>
+
+
+<!-- 
+<ng-template [ngIf]="continue">
+    hello world
+</ng-template> -->
+
+
+
+<!-- NG FOR -->
+
+
+
+<!-- <div>
+    <ul>
+        <li *ngFor="let name of names"> -->
+<!-- if we are getting the employees from the backend we have to write let employee of employees -->
+        <!-- {{name}}
+        </li>
+    </ul>
+</div> -->
+<div>
+    <ul class="list-unstyled" *ngIf="employ">
+        <!-- list-unstyled class is used to remove the style before the numbers -->
+        <li *ngFor="let employee of employees;let i=index">
+<!-- syntax is something of some array -->
+           {{i+1}} {{employee.name}}
+           <!-- here i is index for numbering the list -->
+           <!-- i is for starting from 0 and i+1 is for starting from 1 -->
+        </li>
+    </ul>
+</div>
+
+
+
+<!-- NG CLASS -->
+
+<!-- <div [ngClass]="{'active: continue'}"> -->
+    <!-- left : class name
+        right : condition
+    -->
+    <!-- when the condition will be true then the class should append -->
+<!-- </div> -->
+
+<!-- <div [ngClass]="{'hello':true}"> -->
+    <!-- here directly hello class is appending andd if we use false the class will not append itself -->
+    <!-- angular class demo -->
+<!-- </div> -->
+
+<div [ngClass]="callngclass()">
+    <!-- here directly function will be append -->
+    <!-- here in callngclass we have return the function in if condition for appending -->
+    angular class demo
+</div>
+
+
+<!-- NG STYLE -->
+
+
+<!-- <div [ngStyle]="dynamicwidth()"> -->
+    <!-- here dynamically we are calling the function otherwise we can write object inline itself  -->
+    <!-- hello -->
+<!-- </div> -->
+
+<div [ngStyle]="{ 'height.px' :400 , 'width.px' :400, 'background':'red'}">
+helloworld
+</div>
+
+
+
+
+
+
+<button (click)="showcontent()">click</button>
+
+
+<button (click)="hidecontent()">click</button>
+<button (click)="content()">click</button>
+<!-- (click) it is a event binding because we are binding the click event -->
+
+
+<!-- PROPERTY BINDING -->
+
+<!-- <img [src]="logo"> -->
+<!-- <img src= "{{logo}}"> -->
+<!-- here from the backend the logo variable is taking the path -->
+<!-- there are two ways to represent one is giving interpolation and other is using square braces  -->
+<img [src]="selectedlogo">
+<!-- here from the backend we are assigning the conditional expression for changing the logos by clicking the button -->
+<button (click)="changelogos()">click</button>
+
+
+<!-- TWO WAY DATA BINDING -->
+<div class="form-group">
+<input class="form-control"[(ngModel)]="email" placeholder="Email" type="email">
+{{email}}
+</div>
+
+
+<!-- Directives  
+    *ngIf (show and hide)
+    *ngFor (for list of tables )
+    *ngclass (appending the classes)
+    *ngstyle  -->
+
+<!-- bindings
+    one way binding (   () for events , [] for directives    )
+    two way binding ( [()]) -->
+
+<!-- (one way binding)
+    event binding
+    attribute binding
+
+    (two way binding)
+    input binding -->
+
+
+
+

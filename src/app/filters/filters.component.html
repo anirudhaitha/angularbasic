@@ -1,0 +1,69 @@
+<!-- PIPE -->
+<!-- when we give an input it will transform or modify it and gives output-->
+<!-- PREDEFINED PIPE -->
+<!-- DATE PIPE
+    CURRENCY PIPE
+    DECIMAL PIPE
+    DEPRECATED CURRENCY PIPE 
+    JSON PIPE
+    PERCENT PIPE
+    TITLE PIPE IS FOR TEXT CAPTILIZE
+    REMAINING WE CAN GET IN ANGULAR.IO WEBSITE-->
+
+
+
+
+
+<div>
+  <ul>
+  <li>
+        <!-- DATE PIPE -->
+
+    <!-- {{currentDate | date }}  -->
+    <!-- after the | symbol any word is called pipe -->
+   
+    <!-- {{currentDate | date:"MM/dd/yy"}} -->
+    <!-- we are writing in the m/d/y format and if we want to write another argument type colon(:) -->
+
+    <!-- {{currentDate | date :"fullDate" | uppercase }} -->
+    <!-- using this we will get the entire date with day -->
+   
+    {{ currentDate }}<br>
+    <!-- using this we will get the entire date including GMT  -->
+   
+     <!-- CURRENCY PIPE -->
+    {{currencyDate | currency: 'INR' }}<br>
+   <!-- these gives the rupees in indian ruppee symbol -->
+   
+     <!-- DECIMAL PIPE -->
+
+   {{decimalD | number : '5.1-5'}}<br>
+   <!-- HERE IT IS SHOWING AS BEFORE DECIMAL AND AFTER DECIMAL-->
+
+   <!-- TITLE PIPE -->
+   {{titleT | titlecase }}<br>
+   <!-- here it is making the sentence as captilzation for each word -->
+
+   <!-- PERCENT PIPE -->
+   {{ percentP | percent}}
+   <!-- returns percentage for the number -->
+  </li>
+  </ul>
+</div>
+
+
+
+
+<!-- CUSTOMIZED PIPE -->
+
+
+<input [(ngModel)]="searchText" class="form-control" placeholder="search">
+
+<div class="col-sm-3" *ngFor = "let movie of movies | filter : searchText" style="margin-top: 30px;">
+ <div class="form-group">
+   name : {{movie.name}}
+ </div>
+  <div class="form-group">
+   Genere : {{movie.genere}}
+  </div>
+</div>
