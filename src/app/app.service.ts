@@ -16,4 +16,4 @@ export class  AppServices {
            
         //     return this.http.post("http://localhost:3500/v1/user/login",details )
         // }
-}
+} 
