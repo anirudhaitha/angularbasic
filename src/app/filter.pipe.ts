@@ -13,6 +13,7 @@ export class filterPipe implements PipeTransform{
         if(text == undefined ){
             this.filterData = data ;
         }else {
+            text = text.toLowerCase();
             data.forEach(movie => {
                 if(movie.name.toLowerCase().indexOf(text)>=0 || movie.genere.toLowerCase().indexOf(text)>=0 ){
                     this.filterData.push(movie);
@@ -22,3 +23,4 @@ export class filterPipe implements PipeTransform{
         return this.filterData ;
     }
 }
+  

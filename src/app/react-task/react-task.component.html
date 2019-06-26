@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+
+      <!-- using REACTIVE FORMS -->
+
+      <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group" [ngClass]="{'has-error':userDetailsForm.get('userName').invalid 
+        && userDetailsForm.get('userName').touched}">
+          <input type="text" id="username" class="form-control" placeholder="enter name" formControlName="userName"
+            required>
+          <span class="help-block"
+            *ngIf="userDetailsForm.get('userName').invalid && userDetailsForm.get('userName').touched">
+            name is requried
+          </span>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error':userDetailsForm.get('mobile').invalid &&
+        userDetailsForm.get('mobile').touched}">
+          <input type="number" id="mobile" class="form-control" placeholder="enter mobile" formControlName="mobile"
+            required>
+          <span class="help-block"
+            *ngIf="userDetailsForm.get('mobile').invalid && userDetailsForm.get('mobile').touched"> mobile is
+            requried</span>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-primary" (click)="addEmail()" style="margin-bottom: 20px;">Add
+              Mail</button>
+          </div>
+        </div>
+
+
+        <div formArrayName="emails" *ngFor="let mail of userDetailsForm.get('emails').controls; let i=index">
+          <div [formGroupName]="i">
+            <div class="form-group" [ngClass]="{'has-error':mail.get('email').invalid && mail.get('email').touched}">
+
+              <input type="email" [id]="'email'+i" class="form-control" placeholder="enter email"
+                formControlName="email" required>
+
+              <span class="help-block" *ngIf="mail.get('email').invalid && mail.get('email').touched">
+                email is requried
+              </span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="delEmail(i)"
+            style="margin-bottom: 20px;text-align: center">delete</button>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

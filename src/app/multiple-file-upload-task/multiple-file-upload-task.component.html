@@ -1,0 +1,107 @@
+<div class="col-md-6 offset-md-3">
+  <h4 style="margin-left: 10px;"> Angular Multiple File Upload!</h4>
+  <h5 style="margin-left: 10px;">form format</h5>
+  <mat-card>
+    <form [formGroup]="uploadForm" (ngSubmit)="uploadSubmit()">
+      <mat-card-content>
+        <mat-form-field class="form-field">
+          <mat-label>Select Document Type</mat-label>
+          <mat-select formControlName="type" required>
+            <mat-option value="Passport">Passport</mat-option>
+            <mat-option value="Driving_license">Driving License</mat-option>
+            <mat-option value="PAN">PAN</mat-option>
+          </mat-select>
+          <mat-error>{{docError()}}</mat-error>
+        </mat-form-field>
+        <br>
+        <input formControlName="document" type="file" ng2FileSelect [uploader]="uploader" multiple /><br />
+        <!-- accept=".png"  IS USED TO ACCEPT ONLY .PNG FILES -->
+        <p>{{docListError()}}</p>
+        <br>
+
+        <table>
+          <thead>
+            <tr>
+              <th width="90%">
+                File Name
+              </th>
+              <th width="10%">
+                Remove
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of uploader.queue">
+              <th width="90%">
+                {{ item.file.name}}({{item.file.size/1000000}} MB)
+              </th>
+              <th class="text-center" width="10%">
+                <mat-icon (click)="item.remove()" style="cursor: pointer;">delete</mat-icon>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <br>
+        <!-- <button mat-raised-button color="accent" [disabled]="!uploadForm.valid" type="submit">Upload Data</button> -->
+        <!-- <button class="btn btn-primary" type="submit">Upload Data</button> -->
+        <button class="btn btn-primary" [disabled]="!uploadForm.valid" type="submit">Upload</button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
+
+
+<!--  ======== MULTIPLE FILE UPLOAD USING BASE 64 ======== -->
+
+<div class="col-md-6 offset-md-3">
+  <h4 style="margin-left: 10px;"> base64 data File Upload!</h4>
+  <h5 style="margin-left: 10px;">binary format</h5>
+  <mat-card>
+    <form [formGroup]="base64UploadForm" (ngSubmit)="onSubmitUpload()">
+      <mat-card-content>
+        <mat-form-field class="form-field">
+          <mat-label>Select Document Type</mat-label>
+          <mat-select formControlName="documentType" required>
+            <mat-option value="Passport">Passport</mat-option>
+            <mat-option value="Driving_license">Driving License</mat-option>
+            <mat-option value="PAN">PAN</mat-option>
+          </mat-select>
+          <mat-error>{{docError()}}</mat-error>
+        </mat-form-field>
+
+        <div class="form-group">
+          <input type="file" id="uploadFile" (change)="onUpload($event)" multiple #fileInput>
+        </div>
+        
+        <table style="margin-top: 40px;">
+          <thead>
+            <tr>
+              <th width="90%">
+                File Name
+              </th>
+              <th width="10%">
+                Remove
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let file of uploadedFiles;let i=index">
+              <th width="90%">
+                {{ file.name}}({{file.size/1000000}} MB)
+              </th>
+              <th class="text-center" width="10%">
+                <mat-icon (click)="deleteRecord(i)" style="cursor: pointer;">delete</mat-icon>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+
+        <button type="submit" [disabled]="base64UploadForm.invalid" class="btn btn-primary"
+          style="margin-top: 30px;">Upload </button>
+      </mat-card-content>
+    </form>
+
+  </mat-card>
+</div>

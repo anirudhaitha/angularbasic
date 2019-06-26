@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Observable } from 'rxjs';
+//observable function is used for observing any event and back end data
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
